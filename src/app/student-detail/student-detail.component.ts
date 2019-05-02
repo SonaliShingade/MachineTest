@@ -65,8 +65,8 @@ export class StudentDetailComponent implements OnInit {
       this.temp=i;
       console.log(i);
       this.showEditForm=true;
-      this.showForm=false;
-      this.showTable=false;
+       this.showForm=false;
+       this.showTable=false;
       this.tempstudentDetail1.FullName=this.studentDetail[i].FullName;
       this.tempstudentDetail1.EmailId=this.studentDetail[i].EmailId;
       this.tempstudentDetail1.MobileNumber=this.studentDetail[i].MobileNumber;
@@ -74,13 +74,16 @@ export class StudentDetailComponent implements OnInit {
       this.tempstudentDetail1.City=this.studentDetail[i].City;
       console.log(this.tempstudentDetail1);
     }
-    updateStudentDetail(){    
-    let k=this.temp;
-    console.log(k);
-    for(let i=0;i<this.studentDetail.length;i++){
-      if(i==k){
+    updateStudentDetail(){
+      this.showEditForm=false;
+      this.showForm=true;
+      this.showTable=true;    
+      let k=this.temp;
+      console.log(k);
+      for(let i=0;i<this.studentDetail.length;i++){
+        if(i==k){
         this.studentDetail[i]=this.tempstudentDetail1;
-        this.table.renderRows();
+        //this.table.renderRows();
         console.log(this.studentDetail[i]);
         this.tempstudentDetail1={};
       }
