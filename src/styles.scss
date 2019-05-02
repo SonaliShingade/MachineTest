@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+.example-full-width{
+    width:100%;
+    margin-bottom: 10px;
+}
+.example-half-width{
+    width:50%;
+    margin-bottom: 10px;
+}
+table {
+    width: 100%;
+  }
+  .main{
+      padding: 70px;
+  }
+  .example-button-row{
+      padding: 10px;
+  }

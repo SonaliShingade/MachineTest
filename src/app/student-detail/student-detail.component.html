@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12, main">
+        
+    </div>
+    <div class="col-sm-12, main">
+        <mat-toolbar>Student detail form</mat-toolbar>
+      <form class="student-detail" *ngIf="showForm" >
+        <div class="example-container">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Full Name" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.FullName" >
+          </mat-form-field>
+        
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email Id" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.EmailId">
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="Mobile Number" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.MobileNumber">
+            </mat-form-field>
+    
+          <mat-form-field class="example-full-width " >
+            <textarea matInput placeholder="Address" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.Address" ></textarea>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="City " [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.City">
+          </mat-form-field>  
+  
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Male</mat-radio-button>
+            <mat-radio-button value="2">Female</mat-radio-button>
+          </mat-radio-group>
+  
+          <mat-form-field class="example-full-width">
+              <input matInput [matDatepicker]="picker" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.Dob" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix   [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="example-button-row">
+            <button mat-raised-button color="primary" style="margin-right:10px;" type="submit" (click)="addStudentDetail()" >Submit</button>
+            <button mat-raised-button color="warn" type="reset" >Warn</button>    
+        </div>
+  
+      </form>
+
+
+
+    </div>
+    <div class="col-sm-12" *ngIf="showTable">
+      <table mat-table  [dataSource]="dataSource" #table class="example-full-width" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="FullName">
+          <th mat-header-cell *matHeaderCellDef>Full Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.FullName}} </td>
+        </ng-container>
+      
+        
+        <ng-container matColumnDef="EmailId">
+          <th mat-header-cell *matHeaderCellDef>Email Id </th>
+          <td mat-cell *matCellDef="let element"> {{element.EmailId}} </td>
+        </ng-container>
+      
+        
+        <ng-container matColumnDef="MobileNumber">
+          <th mat-header-cell *matHeaderCellDef> Mobile Number </th>
+          <td mat-cell *matCellDef="let element"> {{element.MobileNumber}} </td>
+        </ng-container>
+      
+        
+        <ng-container matColumnDef="Address">
+          <th mat-header-cell *matHeaderCellDef> Address </th>
+          <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+        </ng-container>
+
+          <ng-container matColumnDef="City">
+            <th mat-header-cell *matHeaderCellDef>City</th>
+            <td mat-cell *matCellDef="let element"> {{element.City}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Gender">
+              <th mat-header-cell *matHeaderCellDef>Gender</th>
+              <td mat-cell *matCellDef="let element"> {{element.Gender}} </td>
+          </ng-container>
+          <ng-container matColumnDef="DOB">
+              <th mat-header-cell *matHeaderCellDef>DOB</th>
+              <td mat-cell *matCellDef="let element"> {{element.Dob}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Action">
+              <th mat-header-cell *matHeaderCellDef>Action</th>
+              <td mat-cell *matCellDef="let row;let i=index"> 
+                <button mat-icon-button  type="button" (click)="editStudentDetail(i)"><mat-icon>edit</mat-icon>
+                </button> 
+                <button mat-icon-button color="warm" type="button" (click)="deleteStudentDetail(index)"><mat-icon>delete_outline</mat-icon></button>
+              </td>
+          </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+    </div>
+    <div class="col-sm-12,main" *ngIf="showEditForm">
+        <mat-toolbar>Edit detail form</mat-toolbar>
+      <form class="student-detail" >
+        <div class="example-container">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Full Name" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail1.FullName" >
+          </mat-form-field>
+        
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Email Id" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail1.EmailId">
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+              <input matInput placeholder="Mobile Number" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail1.MobileNumber">
+            </mat-form-field>
+    
+          <mat-form-field class="example-full-width " >
+            <textarea matInput placeholder="Address" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail1.Address" ></textarea>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="City " [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail1.City">
+          </mat-form-field>  
+  
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1">Male</mat-radio-button>
+            <mat-radio-button value="2">Female</mat-radio-button>
+          </mat-radio-group>
+  
+          <!-- <mat-form-field class="example-full-width">
+              <input matInput [matDatepicker]="picker" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.Dob" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix   [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field> -->
+        </div>
+        <div class="example-button-row">
+            <button mat-raised-button color="primary" style="margin-right:10px;" type="button" (click)="updateStudentDetail()" >Update</button>
+            <button mat-raised-button color="warn" type="reset" >Warn</button>    
+        </div>
+  
+      </form>
+    </div>
+  </div>
+</div>
