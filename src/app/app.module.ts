@@ -6,6 +6,8 @@ import { StudentDetailComponent } from './student-detail/student-detail.componen
 import{FormsModule}from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MaterialModule} from'./shared/material/material.module'
+import{WeatherService} from'./weather.service'
+import { HttpClientModule }    from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +18,10 @@ import{MaterialModule} from'./shared/material/material.module'
     AppRoutingModule,
     FormsModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule 
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

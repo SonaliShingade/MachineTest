@@ -1,27 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material';
-
-export interface PeriodicElement {
-  // name: string;
-  // position: number;
-  // weight: number;
-  // symbol: string;
-    // FullName:String;
-    // EmailId:String;  
-    // MobileNumber:number;
-    // Address:String;
-    // City:String;
-    // Gender:String;
-    // Dob:String;
-
-
-}
-
-// const ELEMENT_DATA: PeriodicElement[] = [
-//   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  
-// ];
-
+import{WeatherService} from'../weather.service'
 
 @Component({
   selector: 'app-student-detail',
@@ -29,6 +8,9 @@ export interface PeriodicElement {
   styleUrls: ['./student-detail.component.scss']
 })
 export class StudentDetailComponent implements OnInit {
+
+  constructor(private service:WeatherService) { }
+
   @ViewChild('table') table: MatTable<Element>;
   studentDetail:any=[
     {
@@ -46,6 +28,11 @@ export class StudentDetailComponent implements OnInit {
   public showTable=true;
   public showForm=true;
   public temp;
+  public weatherData;
+  public location={
+    city:'London',
+    code:'uk'
+  };
   displayedColumns: string[] = ['FullName', 'EmailId', 'MobileNumber', 'Address','City','Gender','DOB','Action'];
   // dataSource = ELEMENT_DATA;
   dataSource = this.studentDetail;
@@ -65,8 +52,8 @@ export class StudentDetailComponent implements OnInit {
       this.temp=i;
       console.log(i);
       this.showEditForm=true;
-       this.showForm=false;
-       this.showTable=false;
+      this.showForm=false;
+      this.showTable=false;
       this.tempstudentDetail1.FullName=this.studentDetail[i].FullName;
       this.tempstudentDetail1.EmailId=this.studentDetail[i].EmailId;
       this.tempstudentDetail1.MobileNumber=this.studentDetail[i].MobileNumber;
@@ -79,7 +66,7 @@ export class StudentDetailComponent implements OnInit {
       this.showForm=true;
       this.showTable=true;    
       let k=this.temp;
-      console.log(k);
+      //console.log(k);
       for(let i=0;i<this.studentDetail.length;i++){
         if(i==k){
         this.studentDetail[i]=this.tempstudentDetail1;
@@ -91,13 +78,17 @@ export class StudentDetailComponent implements OnInit {
     
     }
     deleteStudentDetail(i){
-      console.log(i)
+      //console.log(i)
       this.studentDetail.splice(i,1);
       this.table.renderRows();
     }
-  constructor() { }
+  
 
   ngOnInit() {
+    this.weatherData=this.service.getWeather(this.location.city,this.location.code).subscribe(data=>{
+      this.weatherData=data;
+      console.log(this.weatherData);
+    });
   }
 
 }
