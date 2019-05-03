@@ -8,12 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MaterialModule} from'./shared/material/material.module'
 import{WeatherService} from'./weather.service'
 import { HttpClientModule }    from '@angular/common/http';
-import { AddStudentFormComponent } from './add-student-form/add-student-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     StudentDetailComponent,
-    AddStudentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +24,5 @@ import { AddStudentFormComponent } from './add-student-form/add-student-form.com
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent],
-  entryComponents:[AddStudentFormComponent]
 })
 export class AppModule { }

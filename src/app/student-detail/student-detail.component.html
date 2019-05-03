@@ -92,14 +92,14 @@
                   </mat-radio-group>
           
                   <mat-form-field class="example-full-width">
-                      <input matInput [matDatepicker]="picker" style="z-index: 11000" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.Dob" placeholder="Choose a date">
+                      <input matInput [matDatepicker]="picker"  [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.Dob" placeholder="Choose a date">
                       <mat-datepicker-toggle matSuffix   [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                 </div>
                 <div class="example-button-row">
                     <button mat-raised-button color="primary"  data-dismiss="modal" style="margin-right:10px;" type="submit" (click)="addStudentDetail()" >Submit</button>
-                    <button mat-raised-button color="warn" type="reset" >Warn</button>    
+                    <button mat-raised-button color="warn" type="reset" >Reset</button>    
                 </div>
             </form>
           </div>
@@ -146,7 +146,7 @@
               </div>
               <div class="example-button-row">
                   <button mat-raised-button color="primary"  data-dismiss="modal" style="margin-right:10px;" type="button" (click)="updateStudentDetail()" >Update</button>
-                  <button mat-raised-button color="warn"   type="reset" >Warn</button>    
+                  <button mat-raised-button color="warn"   type="reset" >Reset</button>    
               </div>
             </form>
           </div>

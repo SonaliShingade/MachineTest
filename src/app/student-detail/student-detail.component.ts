@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material';
 import{WeatherService} from'../weather.service'
 import {MatDialog ,MatDialogConfig } from '@angular/material';
-import{AddStudentFormComponent} from'../add-student-form/add-student-form.component'
 @Component({
   selector: 'app-student-detail',
   templateUrl: './student-detail.component.html',
@@ -32,7 +31,6 @@ export class StudentDetailComponent implements OnInit {
     code:'uk'
   };
   displayedColumns: string[] = ['FullName', 'EmailId', 'MobileNumber', 'Address','City','Gender','DOB','Action'];
-  // dataSource = ELEMENT_DATA;
   dataSource = this.studentDetail;
   
   tempstudentDetail:any={};
@@ -73,9 +71,6 @@ export class StudentDetailComponent implements OnInit {
       //console.log(i)
       this.studentDetail.splice(i,1);
       this.table.renderRows();
-    }
-    addNewStudent(){
-     this.dialog.open(AddStudentFormComponent);
     }
   ngOnInit() {
     this.weatherData=this.service.getWeather(this.location.city,this.location.code).subscribe(data=>{
