@@ -1,0 +1,45 @@
+<h1>add student</h1>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12, main">
+          <form class="student-detail"  >
+              <div class="example-container">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Full Name" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.FullName" >
+                </mat-form-field>
+              
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Email Id" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.EmailId">
+                </mat-form-field>
+        
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Mobile Number" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.MobileNumber">
+                  </mat-form-field>
+          
+                <mat-form-field class="example-full-width " >
+                  <textarea matInput placeholder="Address" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.Address" ></textarea>
+                </mat-form-field>
+        
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="City " [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.City">
+                </mat-form-field>  
+        
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1">Male</mat-radio-button>
+                  <mat-radio-button value="2">Female</mat-radio-button>
+                </mat-radio-group>
+        
+                <mat-form-field class="example-full-width">
+                    <input matInput [matDatepicker]="picker" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.Dob" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix   [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="example-button-row">
+                  <button mat-raised-button color="primary" style="margin-right:10px;" type="submit" (click)="addStudentDetail()" >Submit</button>
+                  <button mat-raised-button color="warn" type="reset" >Warn</button>    
+              </div>
+            </form>
+        </div>
+    </div>
+</div>    

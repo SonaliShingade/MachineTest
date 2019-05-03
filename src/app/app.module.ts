@@ -8,10 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import{MaterialModule} from'./shared/material/material.module'
 import{WeatherService} from'./weather.service'
 import { HttpClientModule }    from '@angular/common/http';
+import { AddStudentFormComponent } from './add-student-form/add-student-form.component';
 @NgModule({
   declarations: [
     AppComponent,
-    StudentDetailComponent
+    StudentDetailComponent,
+    AddStudentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -22,6 +24,7 @@ import { HttpClientModule }    from '@angular/common/http';
     HttpClientModule 
   ],
   providers: [WeatherService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[AddStudentFormComponent]
 })
 export class AppModule { }

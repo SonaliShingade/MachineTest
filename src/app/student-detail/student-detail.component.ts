@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material';
 import{WeatherService} from'../weather.service'
-
+import {MatDialog ,MatDialogConfig } from '@angular/material';
+import{AddStudentFormComponent} from'../add-student-form/add-student-form.component'
 @Component({
   selector: 'app-student-detail',
   templateUrl: './student-detail.component.html',
@@ -9,7 +10,7 @@ import{WeatherService} from'../weather.service'
 })
 export class StudentDetailComponent implements OnInit {
 
-  constructor(private service:WeatherService) { }
+  constructor(private service:WeatherService,public dialog: MatDialog) { }
 
   @ViewChild('table') table: MatTable<Element>;
   studentDetail:any=[
@@ -19,14 +20,11 @@ export class StudentDetailComponent implements OnInit {
       MobileNumber:1434343543,
       Address:"hjhkjh",
       City:'pune',
-      Gender:'female',
+      Gender:'Female',
       Dob:'1/4/96'
     },
       
   ];
-  public showEditForm= false;
-  public showTable=true;
-  public showForm=true;
   public temp;
   public weatherData;
   public location={
@@ -41,7 +39,7 @@ export class StudentDetailComponent implements OnInit {
   tempstudentDetail1:any={};
 
     addStudentDetail(){
-      //console.log(this.tempstudentDetail);
+      console.log(this.tempstudentDetail);
       this.studentDetail.push(this.tempstudentDetail);
       //console.log(this.studentDetail);
       this.table.dataSource = this.studentDetail;
@@ -51,9 +49,6 @@ export class StudentDetailComponent implements OnInit {
     editStudentDetail(i){
       this.temp=i;
       console.log(i);
-      this.showEditForm=true;
-      this.showForm=false;
-      this.showTable=false;
       this.tempstudentDetail1.FullName=this.studentDetail[i].FullName;
       this.tempstudentDetail1.EmailId=this.studentDetail[i].EmailId;
       this.tempstudentDetail1.MobileNumber=this.studentDetail[i].MobileNumber;
@@ -61,10 +56,7 @@ export class StudentDetailComponent implements OnInit {
       this.tempstudentDetail1.City=this.studentDetail[i].City;
       console.log(this.tempstudentDetail1);
     }
-    updateStudentDetail(){
-      this.showEditForm=false;
-      this.showForm=true;
-      this.showTable=true;    
+    updateStudentDetail(){    
       let k=this.temp;
       //console.log(k);
       for(let i=0;i<this.studentDetail.length;i++){
@@ -82,8 +74,9 @@ export class StudentDetailComponent implements OnInit {
       this.studentDetail.splice(i,1);
       this.table.renderRows();
     }
-  
-
+    addNewStudent(){
+     this.dialog.open(AddStudentFormComponent);
+    }
   ngOnInit() {
     this.weatherData=this.service.getWeather(this.location.city,this.location.code).subscribe(data=>{
       this.weatherData=data;
