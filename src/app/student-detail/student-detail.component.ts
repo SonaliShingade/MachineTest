@@ -60,7 +60,7 @@ export class StudentDetailComponent implements OnInit {
       for(let i=0;i<this.studentDetail.length;i++){
         if(i==k){
         this.studentDetail[i]=this.tempstudentDetail1;
-        //this.table.renderRows();
+        this.table.renderRows();
         console.log(this.studentDetail[i]);
         this.tempstudentDetail1={};
       }

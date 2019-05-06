@@ -138,11 +138,11 @@
                   <mat-radio-button value="Female" name="Gender">Female</mat-radio-button>
                 </mat-radio-group>
         
-                <!-- <mat-form-field class="example-full-width">
-                    <input matInput [matDatepicker]="picker" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail.Dob" placeholder="Choose a date">
-                    <mat-datepicker-toggle matSuffix   [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field> -->
+                <mat-form-field class="example-full-width">
+                    <input matInput [matDatepicker]="pickerEdit" [ngModelOptions]="{standalone: true}" [(ngModel)]="tempstudentDetail1.Dob" placeholder="Choose a date">
+                    <mat-datepicker-toggle matSuffix   [for]="pickerEdit"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerEdit></mat-datepicker>
+                </mat-form-field>
               </div>
               <div class="example-button-row">
                   <button mat-raised-button color="primary"  data-dismiss="modal" style="margin-right:10px;" type="button" (click)="updateStudentDetail()" >Update</button>
